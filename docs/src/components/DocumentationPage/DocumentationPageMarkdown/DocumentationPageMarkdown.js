@@ -13,7 +13,7 @@ const DocumentationPageMarkdown = ({ pageName, ...rest }) => {
   const { default: MarkdownComponent, meta } = require(`docs/src/pages/${pageName}`)
 
   return (
-    <DocumentationPage additionalTitle={meta.title} sidebar>
+    <DocumentationPage additionalTitle={meta.title}>
       <Container style={containerStyles}>
         <MarkdownComponent {...rest} components={components} />
       </Container>

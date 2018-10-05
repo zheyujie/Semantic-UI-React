@@ -136,7 +136,7 @@ Comparison.propTypes = {
 }
 
 const Introduction = ({ pkg }) => (
-  <DocumentationPage additionalTitle='Introduction' sidebar>
+  <DocumentationPage additionalTitle='Introduction'>
     <Container id='introduction-page'>
       <Segment basic textAlign='center'>
         <Logo centered size='small' />
