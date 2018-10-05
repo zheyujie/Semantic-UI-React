@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Head, withRouter, withSiteData } from 'react-static'
 
-import Sidebar from 'docs/src/components/Sidebar/Sidebar'
+import DocumentationSidebar from 'docs/src/components/DocumentationSidebar'
 import style from 'docs/src/Style'
 import { docTypes, scrollToAnchor } from 'docs/src/utils'
 
@@ -16,6 +16,7 @@ class DocsLayout extends Component {
     additionalTitle: PropTypes.string,
     children: PropTypes.node,
     componentMenu: docTypes.componentMenu.isRequired,
+    history: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     sidebar: PropTypes.bool,
     title: PropTypes.string.isRequired,
@@ -52,7 +53,16 @@ class DocsLayout extends Component {
   }
 
   render() {
-    const { additionalTitle, children, componentMenu, sidebar, title, versions } = this.props
+    const {
+      additionalTitle,
+      children,
+      componentMenu,
+      history,
+      location,
+      sidebar,
+      title,
+      versions,
+    } = this.props
     const mainStyle = sidebar ? style.sidebarMain : style.main
 
     return (
@@ -63,7 +73,13 @@ class DocsLayout extends Component {
             {title}
           </title>
         </Head>
-        <Sidebar componentMenu={componentMenu} style={style.menu} version={versions.suir} />
+        <DocumentationSidebar
+          componentMenu={componentMenu}
+          history={history}
+          location={location}
+          style={style.menu}
+          version={versions.suir}
+        />
         <div style={mainStyle}>{children}</div>
       </div>
     )

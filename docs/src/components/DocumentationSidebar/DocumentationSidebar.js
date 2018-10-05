@@ -2,7 +2,7 @@ import keyboardKey from 'keyboard-key'
 import _ from 'lodash/fp'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-static'
+import { Link } from 'react-static'
 import { Menu, Icon, Input, Ref } from 'semantic-ui-react'
 
 import CarbonAd from 'docs/src/components/CarbonAd/CarbonAd'
@@ -31,12 +31,11 @@ SelectedItemLabel.propTypes = {
   showArrows: PropTypes.bool,
 }
 
-class Sidebar extends Component {
+export default class DocumentationSidebar extends Component {
   static propTypes = {
     componentMenu: docTypes.componentMenu.isRequired,
     history: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
     style: PropTypes.object,
     version: PropTypes.string.isRequired,
   }
@@ -257,5 +256,3 @@ class Sidebar extends Component {
     )
   }
 }
-
-export default withRouter(Sidebar)
