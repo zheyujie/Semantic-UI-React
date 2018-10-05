@@ -2,14 +2,16 @@ import keyboardKey from 'keyboard-key'
 import _ from 'lodash/fp'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Link } from 'react-static'
+import { Link, withRouter } from 'react-static'
 import { Menu, Icon, Input, Ref } from 'semantic-ui-react'
 import EventStack from '@semantic-ui-react/event-stack'
 
 import CarbonAd from 'docs/src/components/CarbonAd/CarbonAd'
+import { withData } from 'docs/src/components/DocumentationDataProvider'
 import Logo from 'docs/src/components/Logo/Logo'
-import { docTypes, getComponentPathname, typeOrder, repoURL } from 'docs/src/utils'
+import { compose } from 'docs/src/hoc'
 import shallowEqual from 'src/lib/shallowEqual'
+import { docTypes, getComponentPathname, typeOrder, repoURL } from 'docs/src/utils'
 
 const selectedItemLabelStyle = {
   position: 'absolute',
@@ -32,7 +34,7 @@ SelectedItemLabel.propTypes = {
   showArrows: PropTypes.bool,
 }
 
-export default class DocumentationSidebar extends Component {
+class DocumentationSidebar extends Component {
   static propTypes = {
     componentMenu: docTypes.componentMenu.isRequired,
     history: PropTypes.object.isRequired,
@@ -251,3 +253,8 @@ export default class DocumentationSidebar extends Component {
     )
   }
 }
+
+export default compose(
+  withData,
+  withRouter,
+)(DocumentationSidebar)

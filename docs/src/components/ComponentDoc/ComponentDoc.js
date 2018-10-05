@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { withRouteData } from 'react-static'
 import { Grid, Header, Icon } from 'semantic-ui-react'
 
-import DocsLayout from 'docs/src/components/DocsLayout'
+import DocumentationPage from 'docs/src/components/DocumentationPage'
 import { docTypes, examplePathToHash, getFormattedHash, scrollToAnchor } from 'docs/src/utils'
 import { isBrowser } from 'src/lib'
 import ComponentDocLinks from './ComponentDocLinks'
@@ -78,7 +78,7 @@ class ComponentDoc extends Component {
     const componentInfo = componentsInfo[displayName]
 
     return (
-      <DocsLayout additionalTitle={displayName} sidebar>
+      <DocumentationPage additionalTitle={displayName} sidebar>
         <Grid padded>
           <Grid.Row>
             <Grid.Column>
@@ -121,7 +121,7 @@ class ComponentDoc extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </DocsLayout>
+      </DocumentationPage>
     )
   }
 }
