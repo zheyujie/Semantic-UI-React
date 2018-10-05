@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { withSiteData } from 'react-static'
 import universal from 'react-universal-component'
 import { Loader } from 'semantic-ui-react'
 
@@ -56,4 +55,4 @@ CodeEditorUniveral.defaultProps = {
   mode: 'jsx',
 }
 
-export default withSiteData(CodeEditorUniveral)
+export default CodeEditorUniveral
