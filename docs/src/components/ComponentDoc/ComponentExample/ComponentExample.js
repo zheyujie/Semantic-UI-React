@@ -2,11 +2,13 @@ import copyToClipboard from 'copy-to-clipboard'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-import { withRouteData, withRouter } from 'react-static'
+import { withRouter } from 'react-static'
 import { Grid, Visibility } from 'semantic-ui-react'
 
-import { examplePathToHash, getFormattedHash, repoURL, scrollToAnchor } from 'docs/src/utils'
 import CarbonAdNative from 'docs/src/components/CarbonAd/CarbonAdNative'
+import { withData } from 'docs/src/components/DocumentationDataProvider'
+import { compose } from 'docs/src/hoc'
+import { examplePathToHash, getFormattedHash, repoURL, scrollToAnchor } from 'docs/src/utils'
 
 import ComponentControls from '../ComponentControls'
 import ComponentExampleRenderEditor from './ComponentExampleRenderEditor'
@@ -301,4 +303,7 @@ class ComponentExample extends PureComponent {
   }
 }
 
-export default withRouteData(withRouter(ComponentExample))
+export default compose(
+  withRouter,
+  withData,
+)(ComponentExample)
