@@ -3,7 +3,7 @@ import React from 'react'
 import { Link, withSiteData } from 'react-static'
 import { Container, Divider, Grid, Header, Icon, Label, List, Segment } from 'semantic-ui-react'
 
-import DocsLayout from 'docs/src/components/DocsLayout'
+import DocumentationPage from 'docs/src/components/DocumentationPage'
 import Editor from 'docs/src/components/CodeEditor'
 import Logo from 'docs/src/components/Logo/Logo'
 import { btoa, semanticUIDocsURL, repoURL } from 'docs/src/utils'
@@ -136,7 +136,7 @@ Comparison.propTypes = {
 }
 
 const Introduction = ({ pkg }) => (
-  <DocsLayout additionalTitle='Introduction'>
+  <DocumentationPage additionalTitle='Introduction' sidebar>
     <Container id='introduction-page'>
       <Segment basic textAlign='center'>
         <Logo centered size='small' />
@@ -320,7 +320,7 @@ const Introduction = ({ pkg }) => (
         <Divider hidden section />
       </Segment>
     </Container>
-  </DocsLayout>
+  </DocumentationPage>
 )
 
 Introduction.propTypes = {
