@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-static'
 import { Menu, Icon, Input, Ref } from 'semantic-ui-react'
+import EventStack from '@semantic-ui-react/event-stack'
 
 import CarbonAd from 'docs/src/components/CarbonAd/CarbonAd'
 import Logo from 'docs/src/components/Logo/Logo'
@@ -50,14 +51,6 @@ export default class DocumentationSidebar extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return !shallowEqual(this.state, nextState)
-  }
-
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleDocumentKeyDown)
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleDocumentKeyDown)
   }
 
   handleDocumentKeyDown = (e) => {
@@ -252,6 +245,8 @@ export default class DocumentationSidebar extends Component {
             <CarbonAd />
           </div>
         </Menu>
+
+        <EventStack name='keydown' on={this.handleDocumentKeyDown} />
       </div>
     )
   }
