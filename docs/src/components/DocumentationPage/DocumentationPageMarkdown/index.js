@@ -1,1 +1,1 @@
-export default from './DocumentationMarkdownPage'
+export default from './DocumentationPageMarkdown'

@@ -28,7 +28,7 @@ export default async () => {
     // Routes for pages, i.e /theming
     ..._.map(getPagesPaths(), ({ pageName, routeName }) => ({
       path: routeName,
-      component: 'docs/src/components/DocumentationPage',
+      component: 'docs/src/components/DocumentationPage/DocumentationPageMarkdown',
       priority: 0.9,
       getData: async () => ({
         pageName,
