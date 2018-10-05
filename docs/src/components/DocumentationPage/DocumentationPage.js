@@ -1,25 +1,34 @@
 import PropTypes from 'prop-types'
-import React from 'react'
-import { withRouteData, withSiteData } from 'react-static'
-import { Container } from 'semantic-ui-react'
+import React, { Fragment } from 'react'
 
-import DocsLayout from 'docs/src/components/DocsLayout'
-import * as components from './components'
+import DocumentationDataProvider from 'docs/src/components/DocumentationDataProvider'
+import DocumentationSidebar from 'docs/src/components/DocumentationSidebar'
+import style from 'docs/src/Style'
+import DocumentationPageTitle from './DocumentationPageTitle'
+import DocumentationPageScroll from './DocumentationPageScroll'
 
-const DocumentationPage = ({ pageName, ...rest }) => {
-  const { default: MarkdownComponent, meta } = require(`docs/src/pages/${pageName}`)
+const DocumentationPage = (props) => {
+  const { additionalTitle, children, sidebar } = props
+  const mainStyle = sidebar ? style.sidebarMain : style.main
 
   return (
-    <DocsLayout additionalTitle={meta.title}>
-      <Container style={{ padding: 15 }}>
-        <MarkdownComponent {...rest} components={components} />
-      </Container>
-    </DocsLayout>
+    <Fragment>
+      <DocumentationPageScroll />
+
+      <DocumentationDataProvider>
+        <DocumentationPageTitle additional={additionalTitle} />
+        <DocumentationSidebar style={style.menu} />
+
+        <div style={mainStyle}>{children}</div>
+      </DocumentationDataProvider>
+    </Fragment>
   )
 }
 
 DocumentationPage.propTypes = {
-  pageName: PropTypes.string.isRequired,
+  additionalTitle: PropTypes.string,
+  children: PropTypes.node,
+  sidebar: PropTypes.bool,
 }
 
-export default withSiteData(withRouteData(DocumentationPage))
+export default DocumentationPage
