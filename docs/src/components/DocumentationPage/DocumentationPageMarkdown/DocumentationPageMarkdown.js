@@ -7,12 +7,14 @@ import DocumentationPage from 'docs/src/components/DocumentationPage'
 import { compose } from 'docs/src/hoc'
 import * as components from './components'
 
+const containerStyles = { padding: 15 }
+
 const DocumentationPageMarkdown = ({ pageName, ...rest }) => {
   const { default: MarkdownComponent, meta } = require(`docs/src/pages/${pageName}`)
 
   return (
     <DocumentationPage additionalTitle={meta.title} sidebar>
-      <Container style={{ padding: 15 }}>
+      <Container style={containerStyles}>
         <MarkdownComponent {...rest} components={components} />
       </Container>
     </DocumentationPage>
