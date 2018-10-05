@@ -7,7 +7,7 @@ import { Menu, Icon, Input, Ref } from 'semantic-ui-react'
 import EventStack from '@semantic-ui-react/event-stack'
 
 import CarbonAd from 'docs/src/components/CarbonAd/CarbonAd'
-import { withData } from 'docs/src/components/DocumentationDataProvider'
+import { withData } from 'docs/src/components/DocumentationProvider'
 import Logo from 'docs/src/components/Logo/Logo'
 import { compose } from 'docs/src/hoc'
 import shallowEqual from 'src/lib/shallowEqual'
