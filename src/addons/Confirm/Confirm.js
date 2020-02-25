@@ -2,6 +2,7 @@ import _ from 'lodash'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
+import FocusLock from 'react-focus-lock'
 import { customPropTypes, getUnhandledProps } from '../../lib'
 import Button from '../../elements/Button'
 import Modal from '../../modules/Modal'
@@ -87,15 +88,17 @@ class Confirm extends Component {
         {Modal.Header.create(header, { autoGenerateKey: false })}
         {Modal.Content.create(content, { autoGenerateKey: false })}
         <Modal.Actions>
-          {Button.create(cancelButton, {
-            autoGenerateKey: false,
-            overrideProps: this.handleCancelOverrides,
-          })}
-          {Button.create(confirmButton, {
-            autoGenerateKey: false,
-            defaultProps: { primary: true },
-            overrideProps: this.handleConfirmOverrides,
-          })}
+          <FocusLock>
+            {Button.create(cancelButton, {
+              autoGenerateKey: false,
+              overrideProps: this.handleCancelOverrides,
+            })}
+            {Button.create(confirmButton, {
+              autoGenerateKey: false,
+              defaultProps: { primary: true },
+              overrideProps: this.handleConfirmOverrides,
+            })}
+          </FocusLock>
         </Modal.Actions>
       </Modal>
     )
